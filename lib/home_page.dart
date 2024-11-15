@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/screens/message.dart';
+
+import 'package:instagram_clone/screens/notification/notification_screen.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -16,6 +20,7 @@ class _HomePageState extends State<HomePage> {
     "images/7.jpg",
     "images/8.jpg",
   ];
+  int currentPage = 0;
 
   List<String> posts = [
     "images/post_1.png",
@@ -30,7 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> onRefresh() async {
     await Future.delayed(
-      Duration(seconds: 1),
+      const Duration(seconds: 1),
     );
   }
 
@@ -44,12 +49,26 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.favorite_border),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NotificationScreen(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.favorite_border),
           ),
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.chat_bubble_outline),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Message(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.chat_bubble_outline),
           ),
         ],
       ),
@@ -65,12 +84,12 @@ class _HomePageState extends State<HomePage> {
                   children: List.generate(
                     8,
                     (index) => Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         children: [
                           CircleAvatar(
                             radius: 35,
-                            backgroundImage: AssetImage(
+                            backgroundImage: const AssetImage(
                               "images/story.png",
                             ),
                             child: CircleAvatar(
@@ -80,10 +99,10 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Text(
+                          const Text(
                             "Profile Name",
                             style:
                                 TextStyle(fontSize: 12, color: Colors.black87),
@@ -94,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              Divider(),
+              const Divider(),
               Column(
                 children: List.generate(
                   8,
@@ -104,10 +123,10 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             child: CircleAvatar(
                               radius: 14,
-                              backgroundImage: AssetImage(
+                              backgroundImage: const AssetImage(
                                 "images/story.png",
                               ),
                               child: CircleAvatar(
@@ -118,11 +137,11 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ),
-                          Text('Profile Name'),
-                          Spacer(),
+                          const Text('Profile Name'),
+                          const Spacer(),
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.more_vert),
+                            icon: const Icon(Icons.more_vert),
                           ),
                         ],
                       ),
@@ -133,30 +152,30 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.favorite_border),
+                            icon: const Icon(Icons.favorite_border),
                           ),
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.chat_bubble_outline),
+                            icon: const Icon(Icons.chat_bubble_outline),
                           ),
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.label_important),
+                            icon: const Icon(Icons.label_important),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.bookmark_border_outlined),
+                            icon: const Icon(Icons.bookmark_border_outlined),
                           ),
                         ],
                       ),
                       Container(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             RichText(
-                              text: TextSpan(
+                              text: const TextSpan(
                                 style: TextStyle(color: Colors.black),
                                 children: [
                                   TextSpan(text: "Liked by "),
@@ -177,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             RichText(
-                              text: TextSpan(
+                              text: const TextSpan(
                                 style: TextStyle(color: Colors.black),
                                 children: [
                                   TextSpan(
@@ -191,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             ),
-                            Text(
+                            const Text(
                               'View all 12 comments',
                               style: TextStyle(
                                 color: Colors.black38,
@@ -211,3 +230,49 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+
+
+
+
+
+
+// Row(
+//                         children: [
+//                           GridView.count(
+//                             primary: false,
+//                             padding: const EdgeInsets.all(20),
+//                             crossAxisSpacing: 10,
+//                             mainAxisSpacing: 10,
+//                             crossAxisCount: 3,
+//                             children: <Widget>[
+//                               Container(
+//                                 padding: const EdgeInsets.all(8),
+//                                 color: Colors.teal[100],
+//                                 child: Image.asset('images/post_1.png'),
+//                               ),
+//                               Container(
+//                                 padding: const EdgeInsets.all(8),
+//                                 color: Colors.teal[200],
+//                                 child: Image.asset('images/post_1.png'),
+//                               ),
+//                               Container(
+//                                 padding: const EdgeInsets.all(8),
+//                                 color: Colors.teal[300],
+//                                 child: Image.asset('images/post_1.png'),
+//                               ),
+//                               Container(
+//                                 padding: const EdgeInsets.all(8),
+//                                 color: Colors.teal[400],
+//                                 child: Image.asset('images/post_1.png'),
+//                               ),
+//                               Container(
+//                                 padding: const EdgeInsets.all(8),
+//                                 color: Colors.teal[600],
+//                                 child: Image.asset('images/post_1.png'),
+//                               ),
+//                             ],
+//                           )
+//                         ],
+//                       )

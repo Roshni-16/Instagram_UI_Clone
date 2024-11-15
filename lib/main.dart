@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/home_page.dart';
-import 'package:instagram_clone/search_page.dart';
-// import 'package:instagram_clone/splash_screen.dart';
+import 'package:instagram_clone/screens/login_screens/forgot_password.dart';
+import 'package:instagram_clone/screens/login_screens/login_screen.dart';
+import 'package:instagram_clone/screens/search_page.dart';
+import 'package:instagram_clone/screens/login_screens/sign_up.dart';
+import 'package:instagram_clone/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,10 +19,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Instagram_UI_Clone',
       theme: ThemeData(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Color.fromRGBO(40, 40, 40, 1),
         ),
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           elevation: 1,
           color: Colors.white,
           iconTheme: IconThemeData(
@@ -29,13 +32,20 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
-      // SplashScreen()
+      home: const
+          // ForgotPassword(),
+          // SignUp(),
+          // LoginScreen(),
+          SplashScreen(),
+      // ProfileScreen(),
+      //
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -45,72 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: currentPage == 1 ? SearchPage() : HomePage(),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: [
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  currentPage = 0;
-                });
-              },
-              icon: Icon(
-                Icons.home,
-                color: currentPage == 0
-                    ? Color.fromRGBO(203, 73, 101, 1)
-                    : Color.fromRGBO(40, 40, 40, 1),
-              ),
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  currentPage = 1;
-                });
-              },
-              icon: Icon(
-                Icons.search,
-                color: currentPage == 1
-                    ? Color.fromRGBO(203, 73, 101, 1)
-                    : Color.fromRGBO(40, 40, 40, 1),
-              ),
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.add_box_outlined,
-                // color: currentPage == 0
-                //     ? Color.fromRGBO(203, 73, 101, 1)
-                //     : Color.fromRGBO(40, 40, 40, 1),
-              ),
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.ondemand_video,
-                // color: currentPage == 0
-                //     ? Color.fromRGBO(203, 73, 101, 1)
-                //     : Color.fromRGBO(40, 40, 40, 1),
-              ),
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.person,
-                // color: currentPage == 0
-                //     ? Color.fromRGBO(203, 73, 101, 1)
-                //     : Color.fromRGBO(40, 40, 40, 1),
-              ),
-            ),
-            Spacer(),
-          ],
-        ),
-      ),
+      body: currentPage == 1 ? SearchPage() : const HomePage(),
     );
   }
 }

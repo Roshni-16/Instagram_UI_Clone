@@ -37,7 +37,7 @@ class SearchPage extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.person_add),
+                icon: const Icon(Icons.person_add),
               ),
             ],
           ),
@@ -48,7 +48,7 @@ class SearchPage extends StatelessWidget {
                 children: List.generate(
                   7,
                   (index) => Container(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: OutlinedButton(
                       onPressed: () {},
                       child: Text(
